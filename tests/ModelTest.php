@@ -16,4 +16,9 @@ class ModelTest extends TestCase
         $this->assertInstanceOf(ISIN::class, $output);
         $this->assertSame('GB00B3W23161', (string)$output);
     }
+
+    public function testEnvIsSet()
+    {
+        $this->assertSame('hello hammerspace', getenv('SAMPLE_ENV_VALUE'), 'Must set SAMPLE_ENV_VALUE');
+    }
 }

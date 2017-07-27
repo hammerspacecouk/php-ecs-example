@@ -11,5 +11,4 @@ $date = new DateTimeImmutable();
 echo '<h1>PHP Example application</h1>';
 echo '<h2>Example data from Model with dependency: ' . $model->getValue() . '</h2>';
 echo '<h3>Date: ' . $date->format(DateTime::ISO8601);
-
-## todo - add an environment variable
+echo '<h3>Env variable: ' . getenv('SAMPLE_ENV_VALUE') . '</h3>';
