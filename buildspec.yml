@@ -4,6 +4,7 @@ phases:
   install:
     commands:
       - composer install --prefer-dist
+      - apt-get install -y docker-ce awscli
   pre_build:
     commands:
       - composer cs
