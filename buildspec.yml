@@ -3,8 +3,9 @@ version: 0.2
 phases:
   install:
     commands:
+      - apk add docker
+      - apk add awscli
       - composer install --prefer-dist
-      - apt-get install -y docker-ce awscli
   pre_build:
     commands:
       - composer cs
