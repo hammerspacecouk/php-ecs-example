@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - apk add docker
-      - apk add awscli
+      - docker --version
       - composer install --prefer-dist
   pre_build:
     commands:
