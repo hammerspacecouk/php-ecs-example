@@ -3,14 +3,14 @@ version: 0.2
 phases:
   install:
     commands:
-      - apk add docker python py-pip
+      - apk add docker python py-pip openrc --no-cache
       - pip install --upgrade awscli
       - apk del py-pip
       - apk del py-setuptools
       - rm -rf /var/cache/apk/*
       - rm -rf /tmp/*
       - docker --version
-      - /etc/init.d/docker start
+      - rc-service docker start
       - docker ps
   pre_build:
     commands:
