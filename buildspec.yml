@@ -10,7 +10,6 @@ phases:
       - rm -rf /var/cache/apk/*
       - rm -rf /tmp/*
       - docker --version
-      - rc-service docker start
       - docker ps
   pre_build:
     commands:
