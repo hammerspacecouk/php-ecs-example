@@ -3,16 +3,13 @@ version: 0.2
 phases:
   install:
     commands:
-      - apk add docker python py-pip openrc --no-cache
-      - pip install --upgrade awscli
-      - apk del py-pip
-      - apk del py-setuptools
-      - rm -rf /var/cache/apk/*
-      - rm -rf /tmp/*
       - docker --version
       - docker ps
   pre_build:
     commands:
+      - echo Building the original Docker image...
+      - docker build -t $IMAGE_REPO_NAME .
+      - echo Installing dependencies in image
       - composer install --prefer-dist
       - echo Running tests
       - composer cs
@@ -22,7 +19,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
-      - echo Building the Docker image...
+      - echo ReBuilding the Docker image...
       - docker build -t $IMAGE_REPO_NAME .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
   post_build:
