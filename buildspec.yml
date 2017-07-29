@@ -10,7 +10,8 @@ phases:
       - rm -rf /var/cache/apk/*
       - rm -rf /tmp/*
       - docker --version
-      - service docker start
+      - /etc/init.d/docker start
+      - docker ps
   pre_build:
     commands:
       - composer install --prefer-dist
