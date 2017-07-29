@@ -3,7 +3,13 @@ version: 0.2
 phases:
   install:
     commands:
-      - apk add docker
+      - apk-install docker
+      - apk-install python py-pip
+      - pip install --upgrade awscli
+      - apk del py-pip
+      - apk del py-setuptools
+      - rm -rf /var/cache/apk/*
+      - rm -rf /tmp/*
       - docker --version
       - composer install --prefer-dist
   pre_build:
