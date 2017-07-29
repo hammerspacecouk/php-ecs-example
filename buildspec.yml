@@ -3,8 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
-      - apk-install docker
-      - apk-install python py-pip
+      - apk add docker python py-pip
       - pip install --upgrade awscli
       - apk del py-pip
       - apk del py-setuptools
